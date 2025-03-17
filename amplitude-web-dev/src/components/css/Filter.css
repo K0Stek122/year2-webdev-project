@@ -1,7 +1,7 @@
 @import url('colorscheme.css');
 
 .filter {
-    width: 15%;
+    width: 30%;
     height: 80vh;
     flex: 1;
     margin: 1em 1em 1em 1em;
@@ -9,10 +9,23 @@
 
 .filter-container {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 
     color: var(--text-color);
     background-color: var(--background-color);
     border-radius: 1em;
+    height: 50%;
+    vertical-align: top;
+}
+
+.filter-container p {
+    vertical-align: top;
+}
+
+.filter-container p:hover {
+    cursor: pointer;
+    color: var(--accent-color);
+    transition: color 0.5s ease;
 }

@@ -6,6 +6,7 @@ const LogoSearchLogin: React.FC = () => {
         <div className="logo-search-login">
             <p>Logo</p>
             <input type="text" placeholder="Search..." className="search-box" />
+            <p className="login">Login / Sign Up</p>
         </div>
     );
 };

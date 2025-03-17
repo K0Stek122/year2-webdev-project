@@ -7,7 +7,14 @@ const Filter: React.FC<FilterProps> = () => {
     return (
         <div className="filter">
             <div className="filter-container">
-                <p>Element 1</p>
+                <p>Element</p>
+                <p>Element</p>
+                <p>Element</p>
+                <p>Element</p>
+                <p>Element</p>
+                <p>Element</p>
+                <p>Element</p>
+
             </div>
         </div>
     );
