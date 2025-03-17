@@ -14,7 +14,6 @@ const Filter: React.FC<FilterProps> = () => {
                 <p>Element</p>
                 <p>Element</p>
                 <p>Element</p>
-
             </div>
         </div>
     );

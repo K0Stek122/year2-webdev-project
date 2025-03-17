@@ -3,4 +3,8 @@
     flex-direction: row;
     margin: 0 0 0 0;
     flex: 2;
+    width: 100%;
+    max-width: 70vw;
+    border-top: none;
+    height: 40vw;
 }

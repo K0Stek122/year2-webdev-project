@@ -8,7 +8,11 @@ function App() {
   return (
     <HashRouter>
         <Routes>
-            <Route path="/" element={<><TopBar /><MainContent /></>} />
+            <Route path="/" element={
+                <div style={{ boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.1)' }}>
+                    <><TopBar /><MainContent /></>
+                </div>
+            } />
         </Routes>
     </HashRouter>
   )
