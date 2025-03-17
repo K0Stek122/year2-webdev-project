@@ -6,11 +6,21 @@ type RouteProps = object;
 
 const Route: React.FC<RouteProps> = () => {
     const location = useLocation();
-    const isHomeRoute = location.pathname === "/";
+
+    const determineRoute = () => {
+        const path = location.pathname;
+        let strippedPath = path.replace(/^\//, '').replace(/-+/g, ' ');
+        strippedPath = strippedPath.charAt(0).toUpperCase() + strippedPath.slice(1);
+        if (strippedPath !== 'Home') {
+            return "Home -> " + strippedPath;
+        }
+        return strippedPath;
+
+    };
 
     return (
         <div className="route">
-            <p>{isHomeRoute ? "Home" : "Not Home"}</p>
+            <p>{determineRoute()}</p>
         </div>
     );
 };
