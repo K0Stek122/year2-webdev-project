@@ -1,17 +1,18 @@
 import React from 'react';
+import './css/ItemPool.css';
+import './SaleItem'
+import SaleItem from './SaleItem';
 
-interface ItemPoolProps {
-    name: string;
-    price: number;
-}
+type ItemPoolProps = object;
 
-const ItemPool: React.FC<ItemPoolProps> = ({ name, price }) => {
+const ItemPool: React.FC<ItemPoolProps> = () => {
     return (
-        <div>
-            <h2>{name}</h2>
-            <p>Price: ${price.toFixed(2)}</p>
+        <div className="item-pool">
+            {Array.from({ length: 100 }).map((_, index) => (
+                <SaleItem key={index} name={`Item ${index + 1}`} price={Math.floor(Math.random() * 100) + 1} />
+            ))}
         </div>
     );
 };
 
-export default SaleItem;
+export default ItemPool;

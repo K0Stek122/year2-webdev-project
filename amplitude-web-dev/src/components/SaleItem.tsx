@@ -1,4 +1,5 @@
 import React from 'react';
+import './css/SaleItem.css';
 
 interface SaleItemProps {
     name: string;
@@ -7,9 +8,10 @@ interface SaleItemProps {
 
 const SaleItem: React.FC<SaleItemProps> = ({ name, price }) => {
     return (
-        <div>
-            <h2>{name}</h2>
-            <p>Price: ${price.toFixed(2)}</p>
+        <div className="card">
+            <p className="item-title">{name}</p>
+            <p className="item-price">Price: ${price.toFixed(2)}</p>
+            <button className="item-button">Add to Cart</button>
         </div>
     );
 };

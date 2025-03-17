@@ -1,0 +1,7 @@
+.item-pool {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0 0 0 0;
+}
