@@ -7,8 +7,12 @@ type CategoriesProps = object;
 const Categories: React.FC<CategoriesProps> = () => {
     return (
         <div className="categories">
-            <Category name="Test" />
-            <Category name="Test 2" />
+            <Category name="Stereo Equipment" />
+            <Category name="Guitars" />
+            <Category name="Keyboards" />
+            <Category name="Drums" />
+            <Category name="Car Parts" />
+            <Category name="DJ and Audio Gear" />
         </div>
     );
 };

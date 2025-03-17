@@ -20,4 +20,7 @@ p {
     margin: auto;
     padding: 0.5em;
     text-align: center;
+    width: 50%;
+    font-weight: bold;
+    color: black;
 }
