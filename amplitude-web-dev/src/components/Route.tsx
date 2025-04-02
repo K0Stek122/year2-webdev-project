@@ -12,6 +12,9 @@ const Route: React.FC<RouteProps> = () => {
         let strippedPath = path.replace(/^\//, '').replace(/-+/g, ' ');
         strippedPath = strippedPath.charAt(0).toUpperCase() + strippedPath.slice(1);
         if (strippedPath !== 'Home') {
+            if (strippedPath === "Login") {
+                return strippedPath
+            }
             return "Home -> " + strippedPath;
         }
         return strippedPath;

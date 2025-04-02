@@ -1,0 +1,9 @@
+.login-image {
+    width: 50%;
+}
+
+.login-image img {
+    object-fit: cover;
+    padding: 1.5em 1.5em 1.5em 1.5em;
+    margin: 0 0 0 0;
+}
