@@ -4,6 +4,7 @@ import TopBar from './components/TopBar'
 import MainContent from './components/MainContent'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import LoginPage from './components/LoginPage'
+import AdminPanel from './components/AdminPanel'
 
 function App() {
   return (
@@ -18,6 +19,12 @@ function App() {
             <Route path="/login" element={
                 <div style={{ boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.1)' }}>
                     <><TopBar /><LoginPage /></>
+                </div>
+            } />
+
+            <Route path="/admin" element={
+                <div style={{ boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.1)' }}>
+                    <><TopBar /><AdminPanel /></>
                 </div>
             } />
 

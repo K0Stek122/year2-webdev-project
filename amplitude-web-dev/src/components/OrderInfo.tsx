@@ -6,7 +6,7 @@ type OrderInfoProps = object;
 const OrderInfo: React.FC<OrderInfoProps> = () => {
     return (
         <div className="order-info">
-            <p>Buy One Get One Free!</p>
+            <p>Buy Get One Free!</p>
         </div>
     );
 };

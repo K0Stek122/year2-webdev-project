@@ -54,3 +54,12 @@ export const readData = async (path: string): Promise<any> => {
         throw error;
     }
 };
+
+export  const deleteData = async (path: string): Promise<void> => {
+    try {
+        // Delete data from the database
+        await set(ref(database, path), null);
+    } catch (error) {
+        console.error("Error deleting data:", error);
+    }
+}
