@@ -20,7 +20,7 @@ const LogoSearchLogin: React.FC = () => {
     return (
         <div className="logo-search-login">
             <p>Logo</p>
-            <InputBox placeholder="Search..." value={inputValue} onChange={handleInputChange} />
+            <InputBox placeholder="Search..." value={inputValue} onChange={handleInputChange} width="50%" />
             <Button name="Login / Sign Up" onclick={handleLoginClick} />
         </div>
     );

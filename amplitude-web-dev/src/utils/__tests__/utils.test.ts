@@ -1,4 +1,4 @@
-import { describe, expect, it, vi, Mock } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import {validateEmail, validatePassword, isInputSQLSafe} from '../utils';
 
 describe('Validation Functions', () => {

@@ -1,0 +1,18 @@
+.admin-panel {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    padding: 1em;
+    width: 200vw;
+    max-width: 70vw;
+    border-top: none;
+    height: 40vw;
+}
+
+.admin-panel-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}

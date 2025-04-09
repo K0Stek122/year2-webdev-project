@@ -6,14 +6,16 @@ type InputBoxProps = {
     censored?: boolean;
     width?: string;
     height?: string;
+    margin?: string;
     value: string;
     onChange: (value: string) => void;
 };
 
 const InputBox: React.FC<InputBoxProps> = (InputBoxProps) => {
     const inputBoxStyle = {
-        width: InputBoxProps.width || '50%',
+        width: InputBoxProps.width || '15em',
         height: InputBoxProps.height || '2em',
+        margin: InputBoxProps.margin || 'auto',
     }
     return (
         <input

@@ -6,9 +6,9 @@ import { validateEmail, validatePassword, isInputSQLSafe } from '../utils/utils'
 import Button from './Button';
 import InputBox from './InputBox';
 
-//PCI-DSS
-
 const LoginContainer: React.FC = () => {
+
+    const margin = '0.25em';
 
     const [account, setAccount] = useState('');
     const [emailInput, setEmailInput] = useState('');
@@ -83,10 +83,10 @@ const LoginContainer: React.FC = () => {
         <div className="login-container">
             {account === '' ? (
             <>
-                <InputBox placeholder="Enter your email" value={emailInput} onChange={handleEmailChange} />
-                <InputBox placeholder="Enter your password" censored={true} value={passwordInput} onChange={handlePasswordChange} />
-                <Button name="Register" onclick={handleRegister} />
-                <Button name="Login" onclick={handleLogin} />
+                <InputBox placeholder="Enter your email" value={emailInput} onChange={handleEmailChange} margin={margin} />
+                <InputBox placeholder="Enter your password" censored={true} value={passwordInput} onChange={handlePasswordChange} margin={margin} />
+                <Button name="Register" onclick={handleRegister} margin={margin} />
+                <Button name="Login" onclick={handleLogin} margin={margin} />
             </>
             ) : (
             <div className="welcome-message">

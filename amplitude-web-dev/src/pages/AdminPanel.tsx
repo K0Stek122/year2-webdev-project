@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { readData, writeData, deleteData } from '../utils/FirebaseHandler';
-import './css/HomePage.css';
+import './css/AdminPanel.css';
 import Button from '../components/Button';
+import InputBox from '../components/InputBox';
 
 interface Item {
     id: string;
@@ -13,6 +14,21 @@ interface Item {
 const AdminPanel: React.FC = () => {
 
     const [items, setItems] = useState<Item[]>([])
+
+    // These are input boxes
+    const [itemName, setItemName] = useState('');
+    const [itemPrice, setItemPrice] = useState('');
+    const [itemTag, setItemTag] = useState('');
+
+    const handleItemNameChange = (value: string) => {
+        setItemName(value);
+    }
+    const handleItemPriceChange = (value: string) => {
+        setItemPrice(value);
+    }
+    const handleItemTagChange = (value: string) => {
+        setItemTag(value);
+    }
 
     const fetchDatabaseItems = () => {
         readData('items').then((data) => {
@@ -29,10 +45,7 @@ const AdminPanel: React.FC = () => {
     }
 
     const addItem = () => {
-        const name = (document.getElementById('item-name') as HTMLInputElement).value;
-        const price = (document.getElementById('item-price') as HTMLInputElement).value;
-        const tag = (document.getElementById('item-tag') as HTMLInputElement).value;
-        addItemToDatabase(name, price, tag);
+        addItemToDatabase(itemName, itemPrice, itemTag);
         fetchDatabaseItems();
     }
 
@@ -59,10 +72,12 @@ const AdminPanel: React.FC = () => {
 
     return (
         <div className="admin-panel">
-            <Button onclick={addItem} name="Add Item" />
-            <input id="item-name" className="input" type="text" placeholder="Item Name" />
-            <input id="item-price" className="input" type="text" placeholder="Item Price" />
-            <input id="item-tag" className="input" type="text" placeholder="Item Tag" />
+            <div className="admin-panel-header">
+                <Button onclick={addItem} name="Add Item" />
+                <InputBox placeholder='Item Name' value={itemName} onChange={handleItemNameChange} />
+                <InputBox placeholder='Item Price' value={itemPrice} onChange={handleItemPriceChange} />
+                <InputBox placeholder='Item Tag' value={itemTag} onChange={handleItemTagChange} />
+            </div>
             <table className="data-table">
                 <thead>
                     <tr>
