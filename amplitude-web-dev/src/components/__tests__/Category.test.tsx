@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { describe, expect, it, vi } from 'vitest';
 import Category from '../../components/Category';
-import '@testing-library/jest-dom';
 
 vi.mock('react-router-dom', () => ({
     mockOnClick: vi.fn(), // A mock function that simulates onClick from Category.tsx
@@ -10,7 +10,7 @@ vi.mock('react-router-dom', () => ({
 describe('Category Component', () => {
     it('Renders a category', () => {
         render(<Category name="Guitars" />);
-        expect(screen.getByText('Guitars')).toBeInTheDocument();
+        expect(screen.getByText('Guitars')).toBeTruthy();
     });
     it ('triggers event when clicked', () => {
         const mockOnClick = vi.fn();

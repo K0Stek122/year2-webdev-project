@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi, Mock } from 'vitest';
 import Categories from '../../components/Categories';
 import { useNavigate } from 'react-router-dom';
-import '@testing-library/jest-dom';
 
 vi.mock('react-router-dom', () => ({
     useNavigate: vi.fn(), // A mock function that simulates useNavigate from Categories.tsx
@@ -11,12 +10,12 @@ vi.mock('react-router-dom', () => ({
 describe('Categories', () => {
     it('Renders all categories', () => {
         render(<Categories />);
-        expect(screen.getByText('Stereo Equipment')).toBeInTheDocument();
-        expect(screen.getByText('Guitars')).toBeInTheDocument();
-        expect(screen.getByText('Keyboards')).toBeInTheDocument();
-        expect(screen.getByText('Drums')).toBeInTheDocument();
-        expect(screen.getByText('Car Parts')).toBeInTheDocument();
-        expect(screen.getByText('DJ and Audio Gear')).toBeInTheDocument();
+        expect(screen.getByText('Stereo Equipment')).toBeTruthy();
+        expect(screen.getByText('Guitars')).toBeTruthy();
+        expect(screen.getByText('Keyboards')).toBeTruthy();
+        expect(screen.getByText('Drums')).toBeTruthy();
+        expect(screen.getByText('Car Parts')).toBeTruthy();
+        expect(screen.getByText('DJ and Audio Gear')).toBeTruthy();
     });
 
     it('Navigates to correct page when clicked', () => {

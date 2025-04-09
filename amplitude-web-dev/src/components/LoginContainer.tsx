@@ -1,26 +1,14 @@
 import { useState } from 'react';
 
 import './css/LoginContainer.css';
-import { readData, writeData } from '../FirebaseHandler';
+import { readData, writeData } from '../utils/FirebaseHandler';
+import { validateEmail, validatePassword, isInputSQLSafe } from '../utils/utils'
 
 //PCI-DSS
 
 const LoginContainer: React.FC = () => {
 
     const [account, setAccount] = useState('');
-
-    const validateEmail = (email: string) => {
-        const re = /\S+@\S+\.\S+/;
-        if (email) {
-            return re.test(email);
-        }
-        return false;
-    };
-
-    const preventSQLInjection = (input: string) => {
-        const re = /^[^'";:()|<>]*$/;
-        return re.test(input);
-    };
 
     const handleRegister = () => {
         if (account !== '') {
@@ -30,22 +18,12 @@ const LoginContainer: React.FC = () => {
 
         const emailInput = document.getElementById('email') as HTMLInputElement;
         const passwordInput = document.getElementById('password') as HTMLInputElement;
-        if (!emailInput || !passwordInput) {
-            alert('Email or password input is missing');
-            return;
-        }
-        if (!validateEmail(emailInput.value) || !preventSQLInjection(emailInput.value)) {
-            alert('Invalid email');
-            return;
-        }
-
-        if (!passwordInput || !preventSQLInjection(passwordInput.value)) {
-            alert('Invalid password');
+        if (validateEmail(emailInput.value) === false || validatePassword(passwordInput.value) === false) {
+            alert('Invalid email or password');
             return;
         }
 
         //FIrebase does not allow '.' in the key, so replace it with '_'
-
         // Make sure the user doesn't already exist, if they do, alert the user, otherwise write the user to the database
         readData('users').then((data) => {
             if (data) {
@@ -70,11 +48,11 @@ const LoginContainer: React.FC = () => {
             alert('Email or password input is missing');
             return;
         }
-        if (!validateEmail(emailInput.value) || !preventSQLInjection(emailInput.value)) {
+        if (!validateEmail(emailInput.value) || !isInputSQLSafe(emailInput.value)) {
             alert('Invalid email');
             return;
         }
-        if (!passwordInput || !preventSQLInjection(passwordInput.value)) {
+        if (!passwordInput || !isInputSQLSafe(passwordInput.value)) {
             alert('Invalid password');
             return;
         }

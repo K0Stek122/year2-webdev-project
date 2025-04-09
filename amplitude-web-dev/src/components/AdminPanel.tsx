@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { readData, writeData, deleteData } from '../FirebaseHandler';
+import { readData, writeData, deleteData } from '../utils/FirebaseHandler';
 import './css/AdminPanel.css';
 
 interface Item {

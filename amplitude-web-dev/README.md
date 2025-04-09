@@ -26,8 +26,10 @@ Node.js's npm is required to run the application. Begin by cloning the repositor
 Install the firebase emulator suite with `npm install -g firebase-tools`
 
 # Usage
-1. Navigate to firebase/ and run the firebase emulator with `firebase emulators:start`.
-2. Navigate to `http://localhost:5731` to view the website.
+1. Ensure FirebaseHandler.tsx contains the proper project ID before running the software.
+2. Navigate to firebase/ and run the firebase emulator with `firebase emulators:start`.
+3. Run `npm run dev` to run the website.
+4. Navigate to `http://localhost:5731` to view the website.
 
 # Test
 - Use vscode's in-built testing suite to test the code. Please run the tests before any commits.
