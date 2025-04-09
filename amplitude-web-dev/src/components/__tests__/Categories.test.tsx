@@ -1,6 +1,6 @@
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi, Mock } from 'vitest';
-import Categories from '../../components/Categories';
+import Categories from '../Categories';
 import { useNavigate } from 'react-router-dom';
 
 vi.mock('react-router-dom', () => ({
@@ -10,12 +10,13 @@ vi.mock('react-router-dom', () => ({
 describe('Categories', () => {
     it('Renders all categories', () => {
         render(<Categories />);
-        expect(screen.getByText('Stereo Equipment')).toBeTruthy();
-        expect(screen.getByText('Guitars')).toBeTruthy();
-        expect(screen.getByText('Keyboards')).toBeTruthy();
-        expect(screen.getByText('Drums')).toBeTruthy();
-        expect(screen.getByText('Car Parts')).toBeTruthy();
-        expect(screen.getByText('DJ and Audio Gear')).toBeTruthy();
+        expect(screen.getByText('Stereo Equipment')).not.toBeNull();
+        expect(screen.getByText('Guitars')).not.toBeNull();
+        expect(screen.getByText('Keyboards')).not.toBeNull();
+        expect(screen.getByText('Drums')).not.toBeNull();
+        expect(screen.getByText('Car Parts')).not.toBeNull();
+        expect(screen.getByText('DJ and Audio Gear')).not.toBeNull();
+        cleanup();
     });
 
     it('Navigates to correct page when clicked', () => {
@@ -35,10 +36,12 @@ describe('Categories', () => {
         expect(navigate).toHaveBeenCalledWith('/car-parts');
         screen.getByText('DJ and Audio Gear').click();
         expect(navigate).toHaveBeenCalledWith('/dj-audio-gear');
+        cleanup();
     });
 
     it('Has className = "category"', () => {
         render(<Categories />);
-        expect(screen.getByText('Stereo Equipment').parentElement).toHaveClass('category');
+        expect(screen.getByText('Stereo Equipment').parentElement?.classList.contains('category')).toBe(true);
+        cleanup();
     });
 });

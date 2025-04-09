@@ -1,5 +1,4 @@
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import { cleanup, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import Category from '../../components/Category';
 
@@ -11,11 +10,13 @@ describe('Category Component', () => {
     it('Renders a category', () => {
         render(<Category name="Guitars" />);
         expect(screen.getByText('Guitars')).toBeTruthy();
+        cleanup();
     });
     it ('triggers event when clicked', () => {
         const mockOnClick = vi.fn();
         render(<Category name="Guitars" onclick={mockOnClick} />);
         screen.getByText('Guitars').click();
         expect(mockOnClick).toHaveBeenCalled();
+        cleanup();
     });
 });

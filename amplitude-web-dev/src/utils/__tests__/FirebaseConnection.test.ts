@@ -11,6 +11,7 @@ describe('Firebase Emulator Connection', () => {
         connectDatabaseEmulator(getDatabase(app), 'localhost', 9000);
         const db = getDatabase(app);
         expect(db).toBeDefined();
+        expect(db).not.toBeNull();
     });
     it('Allows to write data to the database', async () => {
         const app = initializeApp({
