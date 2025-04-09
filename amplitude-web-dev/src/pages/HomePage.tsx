@@ -1,7 +1,7 @@
 import React from 'react';
-import './css/MainContent.css';
-import ItemPool from './ItemPool';
-import Filter from './Filter';
+import './css/HomePage.css';
+import ItemPool from '../components/ItemPool';
+import Filter from '../components/Filter';
 
 const MainContent: React.FC = () => {
     return (

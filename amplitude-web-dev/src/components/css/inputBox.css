@@ -1,0 +1,13 @@
+@import url('colorscheme.css');
+
+.input-box {
+    border-radius: 15px;
+    border-style: none;
+    background-color: rgb(202, 202, 202);
+    margin: 0 0 0 1em;
+    padding: 0.25em;
+    text-align: center;
+    width: 50%;
+    font-weight: bold;
+    color: black;
+}

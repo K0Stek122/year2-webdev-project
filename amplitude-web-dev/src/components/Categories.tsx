@@ -1,6 +1,6 @@
 import React from 'react';
 import './css/Categories.css';
-import Category from './Category';
+import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 
 type CategoriesProps = object;
@@ -34,12 +34,12 @@ const Categories: React.FC<CategoriesProps> = () => {
 
     return (
         <div className="categories">
-            <Category name="Stereo Equipment" onclick={handleStereoClick} />
-            <Category name="Guitars" onclick={handleGuitarClick} />
-            <Category name="Keyboards" onclick={handleKeyboardsClick} />
-            <Category name="Drums" onclick={handleDrumsClick} />
-            <Category name="Car Parts" onclick={handleCarPartsClick} />
-            <Category name="DJ and Audio Gear" onclick={handleDjAudioGearClick} />
+            <Button name="Stereo Equipment" onclick={handleStereoClick} />
+            <Button name="Guitars" onclick={handleGuitarClick} />
+            <Button name="Keyboards" onclick={handleKeyboardsClick} />
+            <Button name="Drums" onclick={handleDrumsClick} />
+            <Button name="Car Parts" onclick={handleCarPartsClick} />
+            <Button name="DJ and Audio Gear" onclick={handleDjAudioGearClick} />
         </div>
     );
 };

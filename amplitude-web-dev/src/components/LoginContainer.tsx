@@ -2,24 +2,45 @@ import { useState } from 'react';
 
 import './css/LoginContainer.css';
 import { readData, writeData } from '../utils/FirebaseHandler';
-import { validateEmail, validatePassword, isInputSQLSafe } from '../utils/utils'
+import { validateEmail, validatePassword, isInputSQLSafe } from '../utils/utils';
+import Button from './Button';
+import InputBox from './InputBox';
 
 //PCI-DSS
 
 const LoginContainer: React.FC = () => {
 
     const [account, setAccount] = useState('');
+    const [emailInput, setEmailInput] = useState('');
+    const [passwordInput, setPasswordInput] = useState('')
 
-    const handleRegister = () => {
-        if (account !== '') {
+    const handleEmailChange = (value: string) => {
+        setEmailInput(value);
+    }
+
+    const handlePasswordChange = (value: string) => {
+        setPasswordInput(value);
+    }
+
+    const validateUserInput = () => {
+        if (account !== '') { //This Should NEVER happen
             alert('User already logged in');
             return;
         }
 
-        const emailInput = document.getElementById('email') as HTMLInputElement;
-        const passwordInput = document.getElementById('password') as HTMLInputElement;
-        if (validateEmail(emailInput.value) === false || validatePassword(passwordInput.value) === false) {
-            alert('Invalid email or password');
+        if (!validateEmail(emailInput) || !isInputSQLSafe(emailInput)) {
+            alert('Invalid email');
+            return false;
+        }
+        if (!validatePassword(passwordInput) || !isInputSQLSafe(passwordInput)) {
+            alert('Invalid password');
+            return false;
+        }
+        return true;
+    }
+
+    const handleRegister = () => {
+        if (!validateUserInput()) {
             return;
         }
 
@@ -28,40 +49,28 @@ const LoginContainer: React.FC = () => {
         readData('users').then((data) => {
             if (data) {
                 const users = Object.keys(data);
-                if (users.includes(emailInput.value.replace(/\./g, '_'))) {
+                if (users.includes(emailInput.replace(/\./g, '_'))) {
                     alert('User already exists');
                     return;
                 }
             }
-            writeData(`users/${emailInput.value.replace(/\./g, '_')}`, { email: emailInput.value, password: passwordInput.value });
+            writeData(`users/${emailInput.replace(/\./g, '_')}`, { email: emailInput, password: passwordInput });
             alert('User registered successfully');
-            setAccount(emailInput.value);
+            setAccount(emailInput);
             return;
         });
     };
 
     const handleLogin = () => {
-
-        const emailInput = document.getElementById('email') as HTMLInputElement;
-        const passwordInput = document.getElementById('password') as HTMLInputElement;
-        if (!emailInput || !passwordInput) {
-            alert('Email or password input is missing');
-            return;
-        }
-        if (!validateEmail(emailInput.value) || !isInputSQLSafe(emailInput.value)) {
-            alert('Invalid email');
-            return;
-        }
-        if (!passwordInput || !isInputSQLSafe(passwordInput.value)) {
-            alert('Invalid password');
+        if (!validateUserInput()) {
             return;
         }
 
         //FIrebase does not allow '.' in the key, so replace it with '_'
-        readData(`users/${emailInput.value.replace(/\./g, '_')}`).then((data) => {
+        readData(`users/${emailInput.replace(/\./g, '_')}`).then((data) => {
             if (data) {
-                if (data.password === passwordInput.value) {
-                    setAccount(emailInput.value);
+                if (data.password === passwordInput) {
+                    setAccount(emailInput);
                     return;
                 }
             }
@@ -74,23 +83,15 @@ const LoginContainer: React.FC = () => {
         <div className="login-container">
             {account === '' ? (
             <>
-                <div className="form-group">
-                <label htmlFor="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required />
-                </div>
-                <div className="form-group">
-                <label htmlFor="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required />
-                </div>
-                <div className="form-actions">
-                <p className="button" onClick={handleRegister}>Register</p>
-                <p className="button" onClick={handleLogin}>Login</p>
-                </div>
+                <InputBox placeholder="Enter your email" value={emailInput} onChange={handleEmailChange} />
+                <InputBox placeholder="Enter your password" censored={true} value={passwordInput} onChange={handlePasswordChange} />
+                <Button name="Register" onclick={handleRegister} />
+                <Button name="Login" onclick={handleLogin} />
             </>
             ) : (
             <div className="welcome-message">
                 <p>You are logged in as: <b>{account}</b>.</p>
-                <p className="button" onClick={() => setAccount('')}>Log Out</p>
+                <Button name="Log Out" onclick={() => setAccount('')} />
             </div>
             )}
         </div>

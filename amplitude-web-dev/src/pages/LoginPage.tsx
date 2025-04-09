@@ -1,6 +1,6 @@
 import React from 'react';
-import LoginContainer from './LoginContainer';
-import LoginImage from './LoginImage'
+import LoginContainer from '../components/LoginContainer';
+import LoginImage from '../components/LoginImage';
 import './css/LoginPage.css';
 
 const LoginPage: React.FC = () => {

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { readData, writeData, deleteData } from '../utils/FirebaseHandler';
-import './css/AdminPanel.css';
+import './css/HomePage.css';
+import Button from '../components/Button';
 
 interface Item {
     id: string;
@@ -58,7 +59,7 @@ const AdminPanel: React.FC = () => {
 
     return (
         <div className="admin-panel">
-            <p onClick={addItem} className="button">Add Item</p>
+            <Button onclick={addItem} name="Add Item" />
             <input id="item-name" className="input" type="text" placeholder="Item Name" />
             <input id="item-price" className="input" type="text" placeholder="Item Price" />
             <input id="item-tag" className="input" type="text" placeholder="Item Tag" />
@@ -80,7 +81,7 @@ const AdminPanel: React.FC = () => {
                             <td>{item.price}</td>
                             <td>{item.tag}</td>
                             <td>
-                                <button onClick={() => deleteItem(item.id)}>Delete</button>
+                                <Button name="Delete" onclick={() => deleteItem(item.id)} />
                             </td>
                         </tr>
                     ))}

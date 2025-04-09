@@ -38,10 +38,4 @@ describe('Categories', () => {
         expect(navigate).toHaveBeenCalledWith('/dj-audio-gear');
         cleanup();
     });
-
-    it('Has className = "category"', () => {
-        render(<Categories />);
-        expect(screen.getByText('Stereo Equipment').parentElement?.classList.contains('category')).toBe(true);
-        cleanup();
-    });
 });

@@ -1,8 +1,17 @@
 import React from 'react';
 import './css/LogoSearchLogin.css';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
+import Button from './Button'
+import InputBox from './InputBox';
 
 const LogoSearchLogin: React.FC = () => {
+    const [inputValue, setInputValue] = useState('');
+
+    const handleInputChange = (value: string) => {
+        setInputValue(value);
+    }
     const navigate = useNavigate();
 
     const handleLoginClick = () => {
@@ -11,8 +20,8 @@ const LogoSearchLogin: React.FC = () => {
     return (
         <div className="logo-search-login">
             <p>Logo</p>
-            <input type="text" placeholder="Search..." className="search-box" />
-            <p className="login" onClick={handleLoginClick}>Login / Sign Up</p>
+            <InputBox placeholder="Search..." value={inputValue} onChange={handleInputChange} />
+            <Button name="Login / Sign Up" onclick={handleLoginClick} />
         </div>
     );
 };

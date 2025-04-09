@@ -1,10 +1,10 @@
 import './App.css'
 import './components/SaleItem'
 import TopBar from './components/TopBar'
-import MainContent from './components/MainContent'
+import MainContent from './pages/HomePage'
 import { HashRouter, Routes, Route } from 'react-router-dom'
-import LoginPage from './components/LoginPage'
-import AdminPanel from './components/AdminPanel'
+import LoginPage from './pages/LoginPage'
+import AdminPanel from './pages/AdminPanel'
 
 function App() {
   return (
