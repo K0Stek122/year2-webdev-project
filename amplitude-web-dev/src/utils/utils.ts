@@ -1,4 +1,4 @@
-import { readData, writeData } from './FirebaseHandler';
+import { readData } from './FirebaseHandler';
 
 /**
  * Utility validates given email with regex.

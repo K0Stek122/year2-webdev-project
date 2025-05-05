@@ -1,5 +1,6 @@
 import React from 'react';
 import './css/SaleItem.css';
+import Button from './Button';
 
 interface SaleItemProps {
     name: string;
@@ -16,7 +17,7 @@ const SaleItem: React.FC<SaleItemProps> = ({ name, price }) => {
         <div className="card">
             <p className="item-title">{name}</p>
             <p className="item-price">Price: £{price.toFixed(2)}</p>
-            <button className="item-button" onClick={addToCart}>Add to Cart</button>
+            <Button name="Add to Cart" onclick={addToCart} />
         </div>
     );
 };
